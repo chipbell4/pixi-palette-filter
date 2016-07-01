@@ -7,7 +7,26 @@ if(typeof require === 'function') {
 }
 
 var PaletteFilter = function(palette) {
-  var fragmentShader = null;
+  var fragmentShader = [
+    'precision lowp float;',
+
+    'varying vec2 vTextureCoord;',
+    'varying vec4 vColor;',
+
+    'uniform sampler2D uSampler;',
+
+    'uniform vec3 palette[' + palette.length + '];',
+
+    'vec4 nearestColor(vec4 color) {',
+    '  return color;',
+    '}',
+
+    'void main(void){',
+    '   vec4 rawColor = texture2D(uSampler, vTextureCoord) * vColor ;',
+    '   gl_FragColor = nearestColor(rawColor);',
+    '}'
+  ].join('\n');
+
 
   var uniforms = {
     palette: {
