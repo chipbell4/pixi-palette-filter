@@ -1,6 +1,6 @@
 var PIXI;
 
-if(require instanceof Function) {
+if(typeof require === 'function') {
   PIXI = require('pixi.js');
 } else {
   PIXI = window.PIXI;
@@ -40,8 +40,8 @@ Object.defineProperties(PaletteFilter.prototype, {
   }
 });
 
-if(module) {
-  module.exports = PaletteFilter;
-} else {
+if(typeof module === 'undefined') {
   window.PaletteFilter = PaletteFilter;
+} else {
+  module.exports = PaletteFilter;
 }
