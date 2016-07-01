@@ -16,6 +16,8 @@ var flakeTexture = PIXI.Texture.fromImage(flake);
 var circles = [];
 function makeCircle() {
     var circle = new PIXI.Sprite(flakeTexture);
+    circle.position.x = Math.random() * renderer.width;
+    circle.position.y = Math.random() * renderer.height;
     circles.push(circle);
     stage.addChild(circle);
 }
