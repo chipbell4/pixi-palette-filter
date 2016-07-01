@@ -37,7 +37,13 @@ for(var i = 0; i < 100; i++) {
 var pixelate = new PIXI.filters.PixelateFilter();
 pixelate.size.x = 5;
 pixelate.size.y = 5;
-container.filters = [pixelate];
+
+var palette = new PaletteFilter([
+    '#000000',
+    '#ff0000'
+]);
+
+container.filters = [pixelate, palette];
 
 // Our render loop
 function render() {
