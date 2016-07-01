@@ -30,6 +30,12 @@ for(var i = 0; i < 100; i++) {
 function render() {
     renderer.render(stage);
 
+    // add a jiggle
+    circles.forEach(function(circle) {
+        circle.position.x += Math.random() < 0.5 ? -1 : 1;
+        circle.position.y += Math.random() < 0.5 ? -1 : 1;
+    });
+
     requestAnimationFrame(render);
 }
 
