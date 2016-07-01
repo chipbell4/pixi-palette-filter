@@ -21,7 +21,9 @@ function makeCircle() {
     circles.push(circle);
     stage.addChild(circle);
 }
-makeCircle();
+for(var i = 0; i < 100; i++) {
+    makeCircle();
+}
 
 function render() {
     renderer.render(stage);
