@@ -6,16 +6,18 @@
     </head>
     <body>
         <script>
+// PIXI general setup
 var renderer = new PIXI.autoDetectRenderer(800, 600);
 document.body.appendChild(renderer.view);
-
 var stage = new PIXI.Stage(0xffffff);
 var container = new PIXI.DisplayObjectContainer();
 stage.addChild(container);
 
+// Create a texture for the circle
 var flake = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAAH7+Yj7AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AMZDzoGd7fvlgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAACAElEQVRYw+WYwXHCMBBF38rklgJwAUkJ5JDeCM3lkhJwAVAAcAFLuchEaCRZxrLHM/kzPiDWq5X+7vdKYozBQgMX4FXs4P0fAGUt8Acv/mDwdXEmMoAArDwrAzRiHFN3IkKDfkjiTxSCBqpgmLFpeo06Q8k1xBo3ERsBBGOM+2zNHx7+W3m7SOC3uFOnFmSGrPoa5Cu16vkNP3K5FpcZEsw85LOLNjOsGjjGCoTcjIuQp9zNaUc465Z7z4jtEHr6Is3OnOKJM8ShTBFhXcif+Gmjn4xYYnuo7loEt746c2wdnj2t8p6TeYS2Ohd9J1R6a+CQsUwNVLEP1tAaDu6fv4f6ybw0IYf7kflokt/oJ6GBSgHXkkWibH9QCtvSamNKq41MIl+LdnguTYooK0PlPBaslBo45jSo2WXnkyIjhKGKsTzUaeP7UBHB7CPqZu3e+xS7Dxvge4Sg3IBP4Gdo1qSwB96YBk1o13ID1BTuenLa1Rypad3D40zo2t82FeA6tZKZ0B3Y1n6Am8zeaC4cbExFpXUS6hVwYrk4FT9BLb4D+ZcBLplio4DdggPcdTJzLXyiKIEb8OJ+i9sF5WSww6yI31nOicbtWGPdzJydTLKjUYnqFgI36xPRKUPaLTzaxR5hdOGgauu7KiHURyfY7vkCzvRfep+trftuhXdRG8Mv83oZKB/I75YAAAAASUVORK5CYII=';
 var flakeTexture = PIXI.Texture.fromImage(flake);
 
+// Make a bunch of circles
 var circles = [];
 function makeCircle() {
     var circle = new PIXI.Sprite(flakeTexture);
@@ -31,6 +33,7 @@ for(var i = 0; i < 100; i++) {
     makeCircle();
 }
 
+// Our render loop
 function render() {
     renderer.render(stage);
 
