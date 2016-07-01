@@ -5,6 +5,8 @@
         <script src="PaletteFilter.js"></script>
     </head>
     <body>
+        <button id="toggle-button">Show Only NES Colors</button>
+        <br/>
         <script>
 // PIXI general setup
 var renderer = new PIXI.autoDetectRenderer(800, 600);
@@ -40,10 +42,7 @@ pixelate.size.y = 5;
 
 var palette = new PaletteFilter(PaletteFilter.NES);
 
-container.filters = [
-    pixelate,
-    palette
-];
+container.filters = [pixelate];
 
 // Our render loop
 function render() {
@@ -59,6 +58,16 @@ function render() {
 }
 
 render();
+
+document.getElementById('toggle-button').addEventListener('click', function() {
+    if(container.filters.length === 2) {
+        container.filters = [pixelate];
+        this.innerHTML = 'Show Only NES Colors';
+    } else {
+        container.filters = [pixelate, palette];
+        this.innerHTML = 'Show all colors';
+    }
+});
         </script>
     </body>
 </html>
