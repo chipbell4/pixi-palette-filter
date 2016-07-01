@@ -33,6 +33,12 @@ for(var i = 0; i < 100; i++) {
     makeCircle();
 }
 
+// Hook up some filters
+var pixelate = new PIXI.filters.PixelateFilter();
+pixelate.size.x = 5;
+pixelate.size.y = 5;
+container.filters = [pixelate];
+
 // Our render loop
 function render() {
     renderer.render(stage);
