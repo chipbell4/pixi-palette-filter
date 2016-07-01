@@ -1,3 +1,11 @@
+var PIXI;
+
+if(require instanceof Function) {
+  PIXI = require('pixi.js');
+} else {
+  PIXI = window.PIXI;
+}
+
 var PaletteFilter = function(palette) {
   var fragmentShader = null;
 
@@ -31,3 +39,9 @@ Object.defineProperties(PaletteFilter.prototype, {
     }
   }
 });
+
+if(module) {
+  module.exports = PaletteFilter;
+} else {
+  window.PaletteFilter = PaletteFilter;
+}
