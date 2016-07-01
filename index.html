@@ -38,14 +38,12 @@ var pixelate = new PIXI.filters.PixelateFilter();
 pixelate.size.x = 5;
 pixelate.size.y = 5;
 
-var palette = new PaletteFilter([
-    '#000000',
-    '#00ff00',
-    '#0000ff',
-    '#ff0000'
-]);
+var palette = new PaletteFilter(PaletteFilter.NES);
 
-container.filters = [pixelate, palette];
+container.filters = [
+    pixelate,
+    palette
+];
 
 // Our render loop
 function render() {
