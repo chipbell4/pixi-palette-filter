@@ -15,10 +15,21 @@ var PaletteFilter = function(palette) {
 
     'uniform sampler2D uSampler;',
 
+    'const int TOTAL_COLORS = ' + palette.length + ';',
     'uniform vec3 palette[' + palette.length + '];',
 
     'vec4 nearestColor(vec4 color) {',
-    '  return color;',
+    '  float bestDot = 0.0;',
+    '  float currentDot = 0.0;',
+    '  vec4 nearest = vec4(0.0, 0.0, 0.0, 0.0);',
+    '  for(int i = 0; i < TOTAL_COLORS; i++) {',
+    '    currentDot = dot(color, vec4(palette[i], 1.0));',
+    '    if(currentDot > bestDot) {',
+    '      bestDot = currentDot;',
+    '      nearest = vec4(palette[i], 1.0);',
+    '    }',
+    '  }',
+    '  return nearest;',
     '}',
 
     'void main(void){',
